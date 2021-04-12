@@ -1,3 +1,5 @@
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
 import java.security.Provider;
 import java.security.Security;
 
@@ -8,7 +10,8 @@ import java.security.Security;
   {
       public static void main(String[]  args)
       {
-       Provider[] providers = Security.getProviders();
+          Security.insertProviderAt(new BouncyCastleProvider(), 1);
+          Provider[] providers = Security.getProviders();
 
        for (int i = 0; i != providers.length; i++)
        {
