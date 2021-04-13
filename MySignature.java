@@ -16,7 +16,7 @@ public class MySignature {
     final String sha512 = "SHA-512";
     final String sha1 = "SHA-1";
     final String md5 = "MD5";
-     public static MySignature getInstance(String algorithm) throws NoSuchAlgorithmException, NoSuchPaddingException, NoSuchProviderException {
+    public static MySignature getInstance(String algorithm) throws NoSuchAlgorithmException, NoSuchPaddingException, NoSuchProviderException {
         Security.insertProviderAt(new BouncyCastleProvider(), 1);
         // primeiro passo: criamos o digest
         MySignature mySig = new MySignature();
@@ -66,7 +66,7 @@ public class MySignature {
         return this.cipher.doFinal(this.originalDigest);
     }
 
-    private static String Hex(byte[] signature){
+    protected static String Hex(byte[] signature){
         // converte o cipherText para hexadecimal
         StringBuffer buf = new StringBuffer();
         for(int i = 0; i < signature.length; i++) {
