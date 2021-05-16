@@ -2,9 +2,9 @@ package MenuFrame.Panel.AlterarSenhaPanel.Buttons;
 
 import MenuFrame.Panel.AlterarSenhaPanel.AlterarSenhaPanel;
 import Database.Database;
-import Database.DAO;
-import Security.CertificateUtility;
-import Security.Validation1;
+import Database.*;
+import Auth.CertificateHelper;
+import Auth.Validation;
 
 import javax.swing.*;
 import java.awt.*;

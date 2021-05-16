@@ -1,35 +1,52 @@
 package Auth;
 
 import Database.*;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.xml.bind.DatatypeConverter;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.*;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Base64;
 
 public class Validation {
 
-    public static ResultSet user;
+    // public static ResultSet user;
     private static ArrayList<String[]> passwordPossibilities;
     public static PrivateKey privateKey;
     public static PublicKey publicKey;
+    public static User user;
 
+    private static User rebuildUser(ResultSet dbUser) throws SQLException {
+        User u = new User();
+        // u.SecretPassphrase = passphrase;
+        u.Email = dbUser.getString("email");
+        u.SaltString = dbUser.getString("salt");
+        // u.Salt = saltString.getBytes(StandardCharsets.UTF_8);
+        u.HashString = dbUser.getString("hash");
+        // u.Hash = hashString.getBytes(StandardCharsets.UTF_8);
+        u.CertificateBase64 = dbUser.getString("certificate");
+        return u;
+    }
     // step 1
     public static boolean verifyEmail(String email) throws Exception {
         Database db = Database.getInstance();
-        Validation.user = db.getUser(email);
-
-        if(Validation.user.isClosed())
+        ResultSet dbUser = db.getUser(email);
+        Validation.user = rebuildUser(dbUser);
+        if(dbUser.isClosed())
             return false;
 
         return true;
@@ -97,7 +114,7 @@ public class Validation {
 //    }
 
     private static boolean guess(ArrayList<String> sequence) throws Exception {
-        String salt = Validation.user.getString("salt");
+        String salt = Validation.user.SaltString;
         String stringSequence = "";
         for (String s : sequence){
             stringSequence+=s;
@@ -107,77 +124,58 @@ public class Validation {
         messageDigest.update((stringSequence + salt).getBytes());
 
         String digestCurrent = DatatypeConverter.printHexBinary(messageDigest.digest());
-        String digest = Validation.user.getString("hash");
-
+        String digest = Validation.user.HashString;
         if(digest.equals(digestCurrent))
             return true;
 
         return false;
     }
 
-    public static PrivateKey getPrivateKey(String password, Path cipherPemPath) throws Exception {
-        SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
-        secureRandom.setSeed(password.getBytes());
+//    public static PublicKey getPublicKey() throws Exception {
+//        byte[] certificateBytes = Validation.user.getBytes("certificate");
+//
+//        CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
+//        InputStream certificateInputStream = new ByteArrayInputStream(certificateBytes);
+//        X509Certificate x509Certificate = (X509Certificate) certificateFactory.generateCertificate(certificateInputStream);
+//
+//        return x509Certificate.getPublicKey();
+//    }
 
-        KeyGenerator keyGenerator = KeyGenerator.getInstance("DES");
-        keyGenerator.init(56, secureRandom);
-        Key key = keyGenerator.generateKey();
+    private static boolean verifyCertificateWithPrivateKey(X509Certificate cert, PrivateKey pKey) throws IOException, SignatureException, NoSuchAlgorithmException, InvalidKeyException {
+        // create randomic array of 2048 bytes
+        byte[] rArr = new byte[2048];
+        (new SecureRandom()).nextBytes(rArr);
+        // sign using the private key
+        Signature sig = Signature.getInstance(cert.getSigAlgName());
+        sig.initSign(pKey);
+        sig.update(rArr);
+        byte[] signature = sig.sign();
 
-        Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
-        cipher.init(Cipher.DECRYPT_MODE, key);
-        byte[] cipherPemBytes = Files.readAllBytes(cipherPemPath);
-        byte[] pemBytes = cipher.doFinal(cipherPemBytes);
+        // verify signature using the public key
+        sig.initVerify(cert.getPublicKey());
+        sig.update(rArr);
 
-        String pemString = new String(pemBytes);
-        pemString = pemString.replace("-----BEGIN PRIVATE KEY-----\n","");
-        pemString = pemString.replace("-----END PRIVATE KEY-----\n","");
-
-        byte[] privateKeyBytes = Base64.getMimeDecoder().decode(pemString);
-        PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(privateKeyBytes);
-
-        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-
-        return keyFactory.generatePrivate(pkcs8EncodedKeySpec);
+        return sig.verify(signature);
     }
 
-    public static PublicKey getPublicKey() throws Exception {
-        byte[] certificateBytes = Validation.user.getBytes("certificate");
 
-        CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
-        InputStream certificateInputStream = new ByteArrayInputStream(certificateBytes);
-        X509Certificate x509Certificate = (X509Certificate) certificateFactory.generateCertificate(certificateInputStream);
+    public static boolean validatePrivateKey(String passphrase, Path keyPath) throws Exception {
+        user.SecretPassphrase = passphrase;
 
-        return x509Certificate.getPublicKey();
-    }
+        try{
+            user.PrivateKey = user.getPrivateKey(keyPath.toString());
+        }
+        catch (Exception e){
+            Database.log(Registry.RegistryWithTimestamp(4005, user.Email));
+            return false;
+        }
 
-    public static boolean isPrivateKeyValid(String password, Path cipherPemPath) throws Exception {
-//        try {
-//            privateKey = getPrivateKey(password, cipherPemPath);
-//        } catch (Exception e) {
-//            Database.log(4005, Validation.user.getString("email"));
-//            return false;
-//        }
-//
-//        publicKey = getPublicKey();
-//
-//        byte[] message = new byte[2048];
-//        (new SecureRandom()).nextBytes(message);
-//
-//        Signature signature = Signature.getInstance("MD5withRSA");
-//        signature.initSign(privateKey);
-//        signature.update(message);
-//        byte[] cipherMessage = signature.sign();
-//
-//        signature.initVerify(publicKey);
-//        signature.update(message);
-//
-//        if(signature.verify(cipherMessage))
-//            return true;
-//
-//        Database.log(4006, Validation.user.getString("email"));
+        user.Certificate = CertificateHelper.decodeBase64Certificate(user.CertificateBase64);
+        if ( verifyCertificateWithPrivateKey(user.Certificate, user.PrivateKey) ){
+            Database.log(Registry.RegistryWithTimestamp(4006, user.Email));
+            return true;
+        }
 
-        // return false;
-
-        return true;
+        return false;
     }
 }

@@ -9,7 +9,7 @@ import java.nio.file.Path;
 
 public class Panel extends JPanel {
 
-    public Path cipherPemPath = null;
+    public Path keyPath = null;
 
     public SelectFileButton selectFileButton;
     public JTextField passwordField;

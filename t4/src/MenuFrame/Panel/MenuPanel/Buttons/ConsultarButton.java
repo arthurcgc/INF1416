@@ -3,8 +3,8 @@ package MenuFrame.Panel.MenuPanel.Buttons;
 import MenuFrame.MenuFrame;
 import MenuFrame.Panel.ConsultarPanel.ConsultarPanel;
 import MenuFrame.Panel.MenuPanel.MenuPanel;
-import Database.Database;
-import Security.Validation1;
+import Database.*;
+import Auth.Validation;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,7 +34,7 @@ public class ConsultarButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            Database.log(5004, Validation1.user.getString("email"));
+            Database.log(Registry.RegistryWithTimestamp(5004, Validation.user.Email));
         } catch (Exception e1) {
             e1.printStackTrace();
         }

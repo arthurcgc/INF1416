@@ -40,7 +40,7 @@ public class Blocked {
                 "AND (registro = 3004 OR registro = 3005);";
 
         PreparedStatement preparedStatement = Database.getInstance().conn.prepareStatement(sql);
-        preparedStatement.setString(1, Validation.user.getString("email"));
+        preparedStatement.setString(1, Validation.user.Email);
         ResultSet resultSet = preparedStatement.executeQuery();
 
         return resultSet.isClosed();
@@ -50,7 +50,7 @@ public class Blocked {
         String query = "UPDATE Usuarios SET fails = ? WHERE email = ?;";
         PreparedStatement preparedStatement = Database.getInstance().conn.prepareStatement(query);
         preparedStatement.setInt(1, fails);
-        preparedStatement.setString(2, Validation.user.getString("email"));
+        preparedStatement.setString(2, Validation.user.Email);
         preparedStatement.executeUpdate();
         preparedStatement.close();
     }
@@ -59,7 +59,7 @@ public class Blocked {
         String sql = "SELECT fails FROM Usuarios WHERE email = ?";
 
         PreparedStatement preparedStatement = Database.getInstance().conn.prepareStatement(sql);
-        preparedStatement.setString(1, Validation.user.getString("email"));
+        preparedStatement.setString(1, Validation.user.Email);
         ResultSet resultSet = preparedStatement.executeQuery();
 
         return resultSet.getInt("fails");

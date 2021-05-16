@@ -20,6 +20,6 @@ public class OnClick implements ActionListener {
         JFileChooser fileChooser = new JFileChooser();
 
         if(fileChooser.showOpenDialog(selectFileButton) == JFileChooser.APPROVE_OPTION)
-            Main.keyVerificationFrame.panel.cipherPemPath = Paths.get(fileChooser.getSelectedFile().getPath());
+            Main.keyVerificationFrame.panel.keyPath = Paths.get(fileChooser.getSelectedFile().getPath());
     }
 }

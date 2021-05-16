@@ -1,7 +1,7 @@
 package AuthenticationFrames.PasswordFrame.Panel.LoginButton;
 
 import Auth.Validation;
-// import AuthenticationFrames.KeyVerificationFrame.KeyVerificationFrame;
+import AuthenticationFrames.KeyVerificationFrame.KeyVerificationFrame;
 import Database.*;
 import Auth.Blocked;
 import Auth.Validation;
@@ -35,11 +35,11 @@ public class OnClick implements ActionListener {
                 return;
             }
 
-            Database.log(Registry.RegistryWithTimestamp(3003, Validation.user.getString("email")));
-            Database.log(Registry.RegistryWithTimestamp(3002, Validation.user.getString("email")));
+            Database.log(Registry.RegistryWithTimestamp(3003, Validation.user.Email));
+            Database.log(Registry.RegistryWithTimestamp(3002, Validation.user.Email));
 
             Main.passwordFrame.dispose();
-            // Main.keyVerificationFrame = new KeyVerificationFrame();
+            Main.keyVerificationFrame = new KeyVerificationFrame();
 
             Blocked.setFails(0);
         } catch(Exception e1) {

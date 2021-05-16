@@ -17,10 +17,13 @@ public class User {
     public String Group;
     public String SecretPassphrase;
     public X509Certificate Certificate;
+    public String CertificateBase64;
     // public PublicKey PublicKey;
     public PrivateKey PrivateKey;
     public byte[] Hash;
+    public String HashString;
     public byte[] Salt;
+    public String SaltString;
 
     public PrivateKey getPrivateKey(String pathString) throws NoSuchAlgorithmException, NoSuchProviderException, NoSuchPaddingException, InvalidKeyException, IOException, InvalidKeySpecException, IllegalBlockSizeException, BadPaddingException {
         SecureRandom rand = SecureRandom.getInstance("SHA1PRNG", "SUN");

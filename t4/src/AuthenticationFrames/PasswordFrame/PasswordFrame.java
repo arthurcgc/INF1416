@@ -54,16 +54,16 @@ public class PasswordFrame extends JFrame {
         switch (fails){
             case 1:
                 errorString = String.format("%s: You have %d attempts left", error, 3-fails);
-                Database.log(Registry.RegistryWithTimestamp(3004, Validation.user.getString("email")));
+                Database.log(Registry.RegistryWithTimestamp(3004, Validation.user.Email));
             case 2:
                 errorString = String.format("%s: You have %d attempts left", error, 3-fails);
-                Database.log(Registry.RegistryWithTimestamp(3005, Validation.user.getString("email")));
+                Database.log(Registry.RegistryWithTimestamp(3005, Validation.user.Email));
             case 3:
                 errorString = String.format("%s: You have %d attempts left", error, 3-fails);
-                Database.log(Registry.RegistryWithTimestamp(3006, Validation.user.getString("email")));
+                Database.log(Registry.RegistryWithTimestamp(3006, Validation.user.Email));
             default:
                 errorString = String.format("%s: User blocked for 2 minutes");
-                Database.log(Registry.RegistryWithTimestamp(3007, Validation.user.getString("email")));
+                Database.log(Registry.RegistryWithTimestamp(3007, Validation.user.Email));
 
                 this.dispose();
                 Main.loginFrame = new LoginFrame();

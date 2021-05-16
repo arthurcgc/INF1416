@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.cert.CertificateEncodingException;
+import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.Base64;
@@ -44,5 +45,13 @@ public class CertificateHelper {
 
     public static String getCertificateBase64(X509Certificate certificate) throws CertificateEncodingException {
         return Base64.getEncoder().encodeToString(certificate.getEncoded());
+    }
+
+    public static X509Certificate decodeBase64Certificate(String certB64) throws CertificateException {
+        byte encodedCert[] = Base64.getDecoder().decode(certB64);
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(encodedCert);
+
+        CertificateFactory certFactory = CertificateFactory.getInstance("X.509");
+        return (X509Certificate) certFactory.generateCertificate(inputStream);
     }
 }

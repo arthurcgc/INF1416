@@ -9,7 +9,7 @@ public class OnChange implements WindowListener {
     @Override
     public void windowOpened(java.awt.event.WindowEvent e) {
         try {
-            Database.log(Registry.RegistryWithTimestamp(3001, Validation.user.getString("email")));
+            Database.log(Registry.RegistryWithTimestamp(3001, Validation.user.Email));
         } catch(Exception e1) {
             e1.printStackTrace();
         }
@@ -18,8 +18,8 @@ public class OnChange implements WindowListener {
     @Override
     public void windowClosing(java.awt.event.WindowEvent e) {
         try {
-            Database.log(Registry.RegistryWithTimestamp(3002, Validation.user.getString("email")));
-            Database.log(Registry.RegistryWithTimestamp(1002, Validation.user.getString("email")));
+            Database.log(Registry.RegistryWithTimestamp(3002, Validation.user.Email));
+            Database.log(Registry.RegistryWithTimestamp(1002, Validation.user.Email));
         } catch(Exception e1) {
             e1.printStackTrace();
         }

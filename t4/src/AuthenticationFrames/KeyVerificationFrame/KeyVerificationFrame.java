@@ -48,7 +48,7 @@ public class KeyVerificationFrame extends JFrame {
             errorString = errorString + "\nVocê tem " + (3 - fails) + " tentativas";
         else {
             errorString = errorString + "\nEmail foi bloqueado por 2 minutos";
-            Database.log(Registry.RegistryWithTimestamp(4007, Validation.user.getString("email")));
+            Database.log(Registry.RegistryWithTimestamp(4007, Validation.user.Email));
 
             this.dispose();
             Main.loginFrame = new LoginFrame();

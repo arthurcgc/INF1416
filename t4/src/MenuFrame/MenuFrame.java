@@ -30,7 +30,7 @@ public class MenuFrame extends JFrame {
     }
 
     private static void count() throws Exception {
-        String email = Validation.user.getString("email");
+        String email = Validation.user.Email;
 
         Database.getInstance().incAccessCounter(email);
     }
