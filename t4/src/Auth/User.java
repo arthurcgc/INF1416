@@ -91,16 +91,16 @@ public class User {
 
     private byte[] generatePasswordHash(String password) throws NoSuchAlgorithmException {
         // Select the message digest for the hash computation -> SHA-256
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        MessageDigest md = MessageDigest.getInstance("SHA1");
 
         // Generate the random salt
         this.Salt = generateSalt();
 
         // Passing the salt to the digest for the computation
-        md.update(this.Salt);
+        md.update((password+ new String(this.Salt)).getBytes());
 
         // Generate the salted hash
-        return md.digest(password.getBytes(StandardCharsets.UTF_8));
+        return md.digest();
     }
 }
 

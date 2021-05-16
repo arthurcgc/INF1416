@@ -35,12 +35,55 @@ public class Validation {
         return true;
     }
 
+    private static Tree[] createTrees(ArrayList<String[]> passwordPhonemes){
+        ArrayList<Node[]> nodes = new ArrayList<Node[]>();
+        for( int i = 0; i < passwordPhonemes.size(); i++){
+            int n = passwordPhonemes.get(i).length;
+            Node[] line = new Node[n];
+            for ( int j = 0; j < n; j++){
+                line[j] = Node.Node(passwordPhonemes.get(i)[j]);
+            }
+            nodes.add(i, line);
+        }
+
+        Tree[] trees = new Tree[]{new Tree(), new Tree(), new Tree()};
+        for (int i = 0; i < nodes.size(); i++){
+            for (int j = 0; j < nodes.get(i).length; j++){
+                Node root = nodes.get(i)[j];
+                if (i + 1 == nodes.size()){
+                    break;
+                }
+                root.children = nodes.get(i+1);
+                if ( i == 0){
+                    trees[j].root = root;
+                }
+            }
+        }
+
+        return trees;
+    }
+
+    static boolean traversePreorder(Node node, int level, int max, ArrayList<String> sequence) throws Exception {
+        ArrayList<String> ss = new ArrayList<String>();
+        ss.add("FA");
+        ss.add("CA");
+        ss.add("FE");
+        ss.add("HO");
+        if (guess(ss)){
+            return true;
+        }
+
+        return false;
+    }
+
     public static boolean guessPassword(ArrayList<String[]> passwordPhonemes) throws Exception {
-        passwordPossibilities = passwordPhonemes;
-//        ArrayList<String> sequence = new ArrayList<String>();
-//        for ( int index = 0; index < 3; index++){
-//            ArrayList<String> seq = addToSequence(sequence, 0, 0);
-//        }
+        Tree[] trees = createTrees(passwordPhonemes);
+
+        for( Tree t : trees){
+            if ( traversePreorder(t.root, 1, passwordPhonemes.size(), new ArrayList<String>()) ){
+                return true;
+            }
+        }
 
         return false;
     }
@@ -53,11 +96,15 @@ public class Validation {
 ////
 //    }
 
-    private static boolean guess(String sequenceNumber) throws Exception {
+    private static boolean guess(ArrayList<String> sequence) throws Exception {
         String salt = Validation.user.getString("salt");
+        String stringSequence = "";
+        for (String s : sequence){
+            stringSequence+=s;
+        }
 
         MessageDigest messageDigest = MessageDigest.getInstance("SHA1");
-        messageDigest.update((sequenceNumber + salt).getBytes());
+        messageDigest.update((stringSequence + salt).getBytes());
 
         String digestCurrent = DatatypeConverter.printHexBinary(messageDigest.digest());
         String digest = Validation.user.getString("hash");
