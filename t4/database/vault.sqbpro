@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/Users/arthur.coelho/Documents/t4/vault.db" readonly="0" foreign_keys="" case_sensitive_like="" temp_store="" wal_autocheckpoint="" synchronous=""/><attached/><window><main_tabs open="structure browser pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1249"/><column_width id="4" width="0"/></tab_structure><tab_browse><current_table name="0,0:"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="group" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="18"/><column index="2" value="36"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="users" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="54"/><column index="2" value="62"/><column index="3" value="24"/><column index="4" value="28"/><column index="5" value="33"/><column index="6" value="90"/><column index="7" value="111"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">CREATE TABLE &quot;&quot;.&quot;users&quot; (
+	&quot;certificate&quot;	TEXT,
+	&quot;UID&quot;	INTEGER,
+	&quot;email&quot;	TEXT,
+	&quot;salt&quot;	TEXT,
+	&quot;hash&quot;	TEXT,
+	&quot;access_counter&quot;	INTEGER,
+	&quot;blocked&quot;	TEXT,
+	&quot;group_id&quot;	INTEGER,
+	PRIMARY KEY(&quot;UID&quot;)
+);</sql><current_tab id="0"/></tab_sql></sqlb_project>

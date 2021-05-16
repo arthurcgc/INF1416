@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.util.Base64;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -39,5 +40,9 @@ public class CertificateHelper {
 
     public static String getCertificateCN(X509Certificate x509Certificate) throws Exception {
         return getCertificateField(x509Certificate, "CN");
+    }
+
+    public static String getCertificateBase64(X509Certificate certificate) throws CertificateEncodingException {
+        return Base64.getEncoder().encodeToString(certificate.getEncoded());
     }
 }

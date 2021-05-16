@@ -61,7 +61,7 @@ public class Auth {
 
     public static byte[] decryptFile(User user, String folderPath, String filename) throws IOException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, NoSuchProviderException, SignatureException, CertificateException {
             byte[] enc = Files.readAllBytes(Paths.get(folderPath + "/" + filename + ".enc"));
-            byte[] seed = getSeed(user.Pkey, folderPath, filename);
+            byte[] seed = getSeed(user.PrivateKey, folderPath, filename);
             byte[] indexPlainBytes = getFileBytes(seed, enc);
 
             System.out.println( new String(indexPlainBytes, "UTF8"));
@@ -79,7 +79,7 @@ public class Auth {
             // setup users
             user01.Certificate = CertificateHelper.getCertificate("safe-folder/Keys/user01-x509.crt");
             user01.Email = CertificateHelper.getCertificateEmail(user01.Certificate);
-            user01.Pkey = user01.getPrivateKey("safe-folder/Keys/user01-pkcs8-des.key");
+            user01.PrivateKey = user01.getPrivateKey("safe-folder/Keys/user01-pkcs8-des.key");
 
             // decrypt index to discover filer list with real names and owner specs
             byte[] indexBytes = decryptFile(user01, filesFolderPath, "index");
@@ -87,11 +87,11 @@ public class Auth {
 
             // decrypt file XXYYZZ11 with user01, email should match so it should be decrypted
             if (checkPermission(user01, indexString, "XXYYZZ11", filesFolderPath)){
-                System.out.println("user %s has access to file: ");
+                System.out.printf("user %s has access to file: %s\n", user01.Email, "XXYYZZ11");
             }
             // decrypt file XXYYZZ22 with user01, group should match so it should be decrypted
             if (checkPermission(user01, indexString, "XXYYZZ22", filesFolderPath)){
-                System.out.println("user %s has access to file: ");
+                System.out.printf("user %s has access to file: %s\n", user01.Email, "XXYYZZ22");
             }
         }
         catch (Exception e){
