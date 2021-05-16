@@ -3,8 +3,6 @@ package AuthenticationFrames.PasswordFrame.Panel.LoginButton;
 import Auth.Validation;
 import AuthenticationFrames.KeyVerificationFrame.KeyVerificationFrame;
 import Database.*;
-import Auth.Blocked;
-import Auth.Validation;
 import Main.Main;
 
 import java.awt.event.ActionEvent;
@@ -18,20 +16,11 @@ public class OnClick implements ActionListener {
         try {
             ArrayList<String[]> passwordPhonemes = Main.passwordFrame.panel.passwordPhonemes;
 
-
-            if(Blocked.isBlocked()) {
-                Main.passwordFrame.warning("User email is blocked");
-                return;
-            }
-
             if(passwordPhonemes.size() != 4 && passwordPhonemes.size() != 5 && passwordPhonemes.size() != 6) {
-                // TODO: change
-                Main.passwordFrame.warningIncrease("Phoneme pairs must be between 4 and 6 (inclusive)");
                 return;
             }
 
             if(Validation.guessPassword(passwordPhonemes) == false) {
-                Main.passwordFrame.warningIncrease("Wrong password");
                 return;
             }
 
@@ -40,8 +29,6 @@ public class OnClick implements ActionListener {
 
             Main.passwordFrame.dispose();
             Main.keyVerificationFrame = new KeyVerificationFrame();
-
-            Blocked.setFails(0);
         } catch(Exception e1) {
             e1.printStackTrace();
         }

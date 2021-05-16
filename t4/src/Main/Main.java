@@ -17,7 +17,9 @@ public class Main {
         try {
             Database db = Database.getInstance();
             db.insertUser(user01);
+            db.insertGroup(user01.Group, user01.GetGroupID());
             db.insertUser(admin);
+            db.insertGroup(admin.Group, admin.GetGroupID());
         } catch(Exception e){
             e.printStackTrace();
         }

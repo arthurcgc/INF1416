@@ -1,23 +1,23 @@
-package MenuFrame.Panel.AlterarSenhaPanel.Labels;
+package MenuFrame.Panel.MenuPanel.Labels;
 
-import MenuFrame.Panel.AlterarSenhaPanel.AlterarSenhaPanel;
 import Auth.Validation;
+import MenuFrame.Panel.MenuPanel.MenuPanel;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ConsultasDoUsuarioLabel extends JLabel {
+public class UserControlPanelLabel extends JLabel {
 
-    public ConsultasDoUsuarioLabel(AlterarSenhaPanel alterarSenhaPanel) {
-        String totalDeAcessos = "Total de acessos do usuário: ";
+    public UserControlPanelLabel(MenuPanel menuPanel) {
+        String accessCountString = "Access count: ";
 
         try {
-            // totalDeAcessos += Validation.user.getInt("acessos") + 1;
+            accessCountString += Validation.user.AccessCounter + 1;
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        this.setText(totalDeAcessos);
+        this.setText(accessCountString);
         this.setVerticalAlignment(JLabel.NORTH);
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
@@ -27,6 +27,6 @@ public class ConsultasDoUsuarioLabel extends JLabel {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.insets = new Insets(10, 10, 0 , 10);
-        alterarSenhaPanel.add(this, gridBagConstraints);
+        menuPanel.add(this, gridBagConstraints);
     }
 }

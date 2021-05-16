@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class MenuFrame extends JFrame {
 
     private final MenuPanel menuPanel;
-    private final String NAME = "Tela Principal";
+    private final String NAME = "Main window";
     private final int WIDTH = 600;
     private final int HEIGHT = 600;
     private static MenuFrame instance = null;
@@ -30,9 +30,7 @@ public class MenuFrame extends JFrame {
     }
 
     private static void count() throws Exception {
-        String email = Validation.user.Email;
-
-        Database.getInstance().incAccessCounter(email);
+        Database.getInstance().incAccessCounter(Validation.user.Email);
     }
 
     public static MenuFrame getInstance() throws Exception {

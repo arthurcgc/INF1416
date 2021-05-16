@@ -23,8 +23,6 @@ public class OnClick implements ActionListener {
 
                 Main.keyVerificationFrame.dispose();
                 menuframe = MenuFrame.getInstance();
-            } else {
-                Main.keyVerificationFrame.warningIncrease("");
             }
         } catch (Exception e1) {
             e1.printStackTrace();

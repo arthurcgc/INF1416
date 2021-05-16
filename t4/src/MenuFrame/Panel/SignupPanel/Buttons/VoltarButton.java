@@ -1,10 +1,10 @@
-package MenuFrame.Panel.AlterarSenhaPanel.Buttons;
+package MenuFrame.Panel.SignupPanel.Buttons;
 
-import Auth.Validation;
 import MenuFrame.MenuFrame;
-import MenuFrame.Panel.AlterarSenhaPanel.AlterarSenhaPanel;
+import MenuFrame.Panel.SignupPanel.SignupPanel;
 import MenuFrame.Panel.MenuPanel.MenuPanel;
-import Database.*;
+import Database.Database;
+import Security.Validation1;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,44 +13,37 @@ import java.awt.event.ActionListener;
 
 public class VoltarButton extends JButton implements ActionListener {
 
-    AlterarSenhaPanel alterarSenhaPanel;
+    SignupPanel signupPanel;
 
-    public VoltarButton(AlterarSenhaPanel alterarSenhaPanel) {
-        this.alterarSenhaPanel = alterarSenhaPanel;
+    public VoltarButton(SignupPanel signupPanel) {
+        this.signupPanel = signupPanel;
 
         this.setText("Voltar para o Menu Principal");
         this.addActionListener(this);
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.weightx = 1;
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.insets = new Insets(10, 10, 0 , 10);
-        alterarSenhaPanel.add(this, gridBagConstraints);
+        signupPanel.add(this, gridBagConstraints);
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            Database.log(Registry.RegistryWithTimestamp(7006, Validation.user.Email));
+            Database.log(6007, Validation1.user.getString("email"));
         } catch (Exception e1) {
             e1.printStackTrace();
         }
 
-        try {
-            MenuFrame.getInstance().remove(alterarSenhaPanel);
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+        MenuFrame.getInstance().remove(signupPanel);
         MenuPanel menuPanel = new MenuPanel();
-        try {
-            MenuFrame.getInstance().add(menuPanel);
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+        MenuFrame.getInstance().add(menuPanel);
         menuPanel.updateUI();
     }
 }

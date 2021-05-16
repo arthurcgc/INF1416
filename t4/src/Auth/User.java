@@ -15,6 +15,7 @@ import java.security.spec.PKCS8EncodedKeySpec;
 public class User {
     public String Email;
     public String Group;
+    public int GroupID;
     public String SecretPassphrase;
     public X509Certificate Certificate;
     public String CertificateBase64;
@@ -24,6 +25,8 @@ public class User {
     public String HashString;
     public byte[] Salt;
     public String SaltString;
+    public int AccessCounter;
+
 
     public PrivateKey getPrivateKey(String pathString) throws NoSuchAlgorithmException, NoSuchProviderException, NoSuchPaddingException, InvalidKeyException, IOException, InvalidKeySpecException, IllegalBlockSizeException, BadPaddingException {
         SecureRandom rand = SecureRandom.getInstance("SHA1PRNG", "SUN");

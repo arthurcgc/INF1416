@@ -1,6 +1,5 @@
 package AuthenticationFrames.LoginFrame.Panel.Button;
 
-import Auth.Blocked;
 import AuthenticationFrames.PasswordFrame.PasswordFrame;
 import Database.*;
 

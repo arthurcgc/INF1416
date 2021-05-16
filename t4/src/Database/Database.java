@@ -59,7 +59,7 @@ public class Database {
 
     public String getGroupName(int id) throws Exception {
         Database db = Database.getInstance();
-        String query = String.format("SELECT Nome FROM groups WHERE id = ?;");
+        String query = String.format("SELECT name FROM groups WHERE id = ?;");
 
         PreparedStatement ps = db.conn.prepareStatement(query);
         ps.setInt(1, id);
@@ -116,6 +116,18 @@ public class Database {
         ps.setString(4, CertificateHelper.getCertificateBase64(user.Certificate));
         ps.setInt(5, user.GetGroupID());
         ps.setInt(6, User.GetUserID(user.Email));
+
+        ps.executeUpdate();
+        ps.close();
+    }
+
+    public void insertGroup(String groupString, int groupID) throws Exception{
+        Database db = Database.getInstance();
+        String query = String.format("INSERT INTO groups(id,name) VALUES (?,?);");
+        PreparedStatement ps = db.conn.prepareStatement(query);
+
+        ps.setInt(1, groupID);
+        ps.setString(2, groupString);
 
         ps.executeUpdate();
         ps.close();

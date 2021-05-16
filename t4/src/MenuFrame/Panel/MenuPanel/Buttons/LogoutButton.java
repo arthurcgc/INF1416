@@ -1,9 +1,10 @@
-package MenuFrame.Panel.AlterarSenhaPanel.Buttons;
+package MenuFrame.Panel.MenuPanel.Buttons;
 
 import Auth.Validation;
 import MenuFrame.MenuFrame;
-import MenuFrame.Panel.AlterarSenhaPanel.AlterarSenhaPanel;
+import MenuFrame.Panel.LogoutPanel.LogoutPanel;
 import MenuFrame.Panel.MenuPanel.MenuPanel;
+// import MenuFrame.Panel.SairPanel.SairPanel;
 import Database.*;
 
 import javax.swing.*;
@@ -11,46 +12,45 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VoltarButton extends JButton implements ActionListener {
+public class LogoutButton extends JButton implements ActionListener {
 
-    AlterarSenhaPanel alterarSenhaPanel;
+    MenuPanel menuPanel;
 
-    public VoltarButton(AlterarSenhaPanel alterarSenhaPanel) {
-        this.alterarSenhaPanel = alterarSenhaPanel;
+    public LogoutButton(MenuPanel menuPanel) {
+        this.menuPanel = menuPanel;
 
-        this.setText("Voltar para o Menu Principal");
+        this.setText("4 - Logout");
         this.addActionListener(this);
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.weightx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.weightx = 0;
         gridBagConstraints.weighty = 0.1;
-        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.insets = new Insets(10, 10, 0 , 10);
-        alterarSenhaPanel.add(this, gridBagConstraints);
+        menuPanel.add(this, gridBagConstraints);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            Database.log(Registry.RegistryWithTimestamp(7006, Validation.user.Email));
+            Database.log(Registry.RegistryWithTimestamp(5005, Validation.user.Email));
         } catch (Exception e1) {
             e1.printStackTrace();
         }
 
         try {
-            MenuFrame.getInstance().remove(alterarSenhaPanel);
+            MenuFrame.getInstance().remove(menuPanel);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-        MenuPanel menuPanel = new MenuPanel();
+         LogoutPanel logoutPanel = new LogoutPanel();
         try {
-            MenuFrame.getInstance().add(menuPanel);
+            MenuFrame.getInstance().add(logoutPanel);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-        menuPanel.updateUI();
+        logoutPanel.updateUI();
     }
 }

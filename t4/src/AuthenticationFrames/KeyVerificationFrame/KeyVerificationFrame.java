@@ -1,14 +1,8 @@
 package AuthenticationFrames.KeyVerificationFrame;
 
 import AuthenticationFrames.KeyVerificationFrame.Panel.Panel;
-import AuthenticationFrames.LoginFrame.LoginFrame;
-import Database.*;
-import Auth.Blocked;
-import Auth.Validation;
-import Main.Main;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class KeyVerificationFrame extends JFrame {
 
@@ -32,29 +26,6 @@ public class KeyVerificationFrame extends JFrame {
         this.setContentPane(panel);
 
         this.setVisible(true);
-    }
-
-    public void warningIncrease(String errorString) throws Exception {
-        int fails = 0;
-
-        try {
-            fails = Blocked.getFails() + 1;
-            Blocked.setFails(fails);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        if(fails < 3)
-            errorString = errorString + "\nVocê tem " + (3 - fails) + " tentativas";
-        else {
-            errorString = errorString + "\nEmail foi bloqueado por 2 minutos";
-            Database.log(Registry.RegistryWithTimestamp(4007, Validation.user.Email));
-
-            this.dispose();
-            Main.loginFrame = new LoginFrame();
-        }
-
-        JOptionPane.showMessageDialog(this, errorString);
     }
 
 }

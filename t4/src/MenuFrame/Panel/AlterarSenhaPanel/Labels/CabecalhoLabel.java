@@ -1,9 +1,8 @@
 package MenuFrame.Panel.AlterarSenhaPanel.Labels;
 
+import Auth.Validation;
 import MenuFrame.Panel.AlterarSenhaPanel.AlterarSenhaPanel;
-import Database.DAO;
-import Security.CertificateUtility;
-import Security.Validation1;
+import Database.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,13 +13,13 @@ public class CabecalhoLabel extends JLabel {
         String cabecalho = "<html>";
 
         try{
-            String email = Validation1.user.getString("email");
-            String grupo_nome = DAO.getInstance().getGrupoNome(Validation1.user.getInt("grupo"));
-            String nome = CertificateUtility.getCertificateCN(Validation1.user.getBytes("certificate"));
-
-            cabecalho = cabecalho + "Login: " + email + "<br>";
-            cabecalho = cabecalho + "Grupo: " + grupo_nome + "<br>";
-            cabecalho = cabecalho + "Nome: " + nome + "<br>";
+            String email = Validation.user.Email;
+            // String grupo_nome = Database.getInstance().getGrupoNome(Validation1.user.getInt("grupo"));
+//            String nome = CertificateUtility.getCertificateCN(Validation1.user.getBytes("certificate"));
+//
+//            cabecalho = cabecalho + "Login: " + email + "<br>";
+//            cabecalho = cabecalho + "Grupo: " + grupo_nome + "<br>";
+//            cabecalho = cabecalho + "Nome: " + nome + "<br>";
         } catch (Exception e){
             e.printStackTrace();
         }

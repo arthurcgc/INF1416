@@ -39,13 +39,17 @@ public class Validation {
         u.HashString = dbUser.getString("hash");
         // u.Hash = hashString.getBytes(StandardCharsets.UTF_8);
         u.CertificateBase64 = dbUser.getString("certificate");
+        u.AccessCounter = dbUser.getInt("access_counter");
+        u.GroupID = dbUser.getInt("group_id");
         return u;
     }
     // step 1
     public static boolean verifyEmail(String email) throws Exception {
         Database db = Database.getInstance();
         ResultSet dbUser = db.getUser(email);
+        // ResultSet dbGroup = db.getGroupName(dbUser.getString(""))
         Validation.user = rebuildUser(dbUser);
+        Validation.user.Group = db.getGroupName(user.GroupID);
         if(dbUser.isClosed())
             return false;
 

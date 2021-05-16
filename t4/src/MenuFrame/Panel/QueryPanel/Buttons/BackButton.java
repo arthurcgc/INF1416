@@ -1,8 +1,8 @@
-package MenuFrame.Panel.AlterarSenhaPanel.Buttons;
+package MenuFrame.Panel.QueryPanel.Buttons;
 
 import Auth.Validation;
 import MenuFrame.MenuFrame;
-import MenuFrame.Panel.AlterarSenhaPanel.AlterarSenhaPanel;
+import MenuFrame.Panel.QueryPanel.QueryPanel;
 import MenuFrame.Panel.MenuPanel.MenuPanel;
 import Database.*;
 
@@ -11,37 +11,37 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VoltarButton extends JButton implements ActionListener {
+public class BackButton extends JButton implements ActionListener {
 
-    AlterarSenhaPanel alterarSenhaPanel;
+    QueryPanel queryPanel;
 
-    public VoltarButton(AlterarSenhaPanel alterarSenhaPanel) {
-        this.alterarSenhaPanel = alterarSenhaPanel;
+    public BackButton(QueryPanel queryPanel) {
+        this.queryPanel = queryPanel;
 
-        this.setText("Voltar para o Menu Principal");
+        this.setText("Back to main menu");
         this.addActionListener(this);
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.weightx = 1;
-        gridBagConstraints.weighty = 0.1;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.insets = new Insets(10, 10, 0 , 10);
-        alterarSenhaPanel.add(this, gridBagConstraints);
+        queryPanel.add(this, gridBagConstraints);
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            Database.log(Registry.RegistryWithTimestamp(7006, Validation.user.Email));
+            Database.log(Registry.RegistryWithTimestamp(8002, Validation.user.Email));
         } catch (Exception e1) {
             e1.printStackTrace();
         }
 
         try {
-            MenuFrame.getInstance().remove(alterarSenhaPanel);
+            MenuFrame.getInstance().remove(queryPanel);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
