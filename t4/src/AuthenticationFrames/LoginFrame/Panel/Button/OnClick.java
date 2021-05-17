@@ -25,6 +25,7 @@ public class OnClick implements ActionListener {
 
             Database.log(Registry.RegistryWithTimestamp(2003, email));
             Database.log(Registry.RegistryWithTimestamp(2002));
+            Database.getInstance().incAccessCounter(email);
 
             Main.loginFrame.dispose();
             Main.passwordFrame = new PasswordFrame();

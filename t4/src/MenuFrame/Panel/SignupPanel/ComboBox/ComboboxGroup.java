@@ -11,8 +11,8 @@ public class ComboboxGroup extends JComboBox<String> implements ActionListener {
     SignupPanel signupPanel;
 
     public ComboboxGroup(SignupPanel signupPanel) {
-        this.addItem("Usuario");
-        this.addItem("Administrador");
+        this.addItem("usuario");
+        this.addItem("admin");
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 0;

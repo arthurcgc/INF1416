@@ -5,6 +5,7 @@ import MenuFrame.MenuFrame;
 // import MenuFrame.Panel.CadastrarPanel.CadastrarPanel;
 import MenuFrame.Panel.MenuPanel.MenuPanel;
 import Database.*;
+import MenuFrame.Panel.SignupPanel.SignupPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -54,12 +55,12 @@ public class SignupButton extends JButton implements ActionListener {
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-        // CadastrarPanel consultarPanel = new CadastrarPanel();
-//        try {
-//            MenuFrame.getInstance().add(consultarPanel);
-//        } catch (Exception exception) {
-//            exception.printStackTrace();
-//        }
-//        consultarPanel.updateUI();
+        SignupPanel signupPanel = new SignupPanel();
+        try {
+            MenuFrame.getInstance().add(signupPanel);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        signupPanel.updateUI();
     }
 }

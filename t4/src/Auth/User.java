@@ -43,6 +43,7 @@ public class User {
         byte[] bytes = Files.readAllBytes(path);
 
         String b64Key = new String(cipher.doFinal(bytes), "UTF8");
+        // Files.write(Paths.get(pathString+".pem.key"), b64Key.getBytes());
         String rawKey = b64Key.replace("-----BEGIN PRIVATE KEY-----", "").replace("-----END PRIVATE KEY-----", "").trim();
         byte[] pKeyBytes = DatatypeConverter.parseBase64Binary(rawKey);
 
@@ -62,10 +63,13 @@ public class User {
     public static int GetUserID(String email) {
         int n = 0;
         // access each character
-        // generate user id for the first 6 characters of the email
+        // generate user id for the first 9 characters of the email
         for (int i = 0; i < 9   ; i++)
             n += Character.getNumericValue(email.charAt(i)) * (int) Math.pow(10, i);
 
+        if (n < 0){
+            return n*-1;
+        }
         return n;
     }
 
@@ -78,6 +82,17 @@ public class User {
         u.Certificate = CertificateHelper.getCertificate(String.format("safe-folder/Keys/%s", certificateFileName));
         u.Email = CertificateHelper.getCertificateEmail(u.Certificate);
         u.PrivateKey = u.getPrivateKey(String.format("safe-folder/Keys/%s", keyFileName));
+        u.Hash = u.generatePasswordHash(password);
+
+        return u;
+    }
+
+    public static User NewUser(String passPhrase, String group, X509Certificate certificate, String password) throws Exception {
+        User u = new User();
+        u.Group = group;
+        u.SecretPassphrase = passPhrase;
+        u.Certificate = certificate;
+        u.Email = CertificateHelper.getCertificateEmail(u.Certificate);
         u.Hash = u.generatePasswordHash(password);
 
         return u;
@@ -109,32 +124,3 @@ public class User {
         return md.digest();
     }
 }
-
-//    public static boolean testaChavePrivada(PrivateKey chavePrivada, HashMap user) {
-//        try {
-//            byte[] teste = new byte[1024];
-//            SecureRandom.getInstanceStrong().nextBytes(teste);
-//            Signature assinatura = Signature.getInstance("MD5withRSA");
-//            assinatura.initSign(chavePrivada);
-//            assinatura.update(teste);
-//            byte[] resp = assinatura.sign();
-//
-//            PublicKey chavePublica = Auth.getCertificate(((String) user.get("certificado")).getBytes()).getPublicKey();
-//            assinatura.initVerify(chavePublica);
-//            assinatura.update(teste);
-//
-//            if (assinatura.verify(resp)) {
-//                System.out.println("Chave válida!");
-//                return true;
-//            }
-//            else {
-//                DBManager.incrementaNumChavePrivadaErrada((String) user.get("email"));
-//                System.out.println("Chave rejeitada!");
-//                return false;
-//            }
-//        }
-//        catch (Exception e) {
-//            System.out.println("Erro ao testar chave privada");
-//            return false;
-//        }
-//    }

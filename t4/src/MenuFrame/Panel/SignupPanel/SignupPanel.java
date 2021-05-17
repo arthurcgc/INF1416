@@ -7,8 +7,8 @@ import MenuFrame.Panel.SignupPanel.Buttons.ClearCertificateButton;
 import MenuFrame.Panel.SignupPanel.Buttons.BackButton;
 import MenuFrame.Panel.SignupPanel.ComboBox.ComboboxGroup;
 import MenuFrame.Panel.SignupPanel.Labels.*;
-import MenuFrame.Panel.SignupPanel.TextFields.ConfirmacaoSenhaTextField;
-import MenuFrame.Panel.SignupPanel.TextFields.SenhaTextField;
+import MenuFrame.Panel.SignupPanel.TextFields.PasswordConfirmTextField;
+import MenuFrame.Panel.SignupPanel.TextFields.PasswordTextField;
 import Database.*;
 
 import javax.swing.*;
@@ -17,8 +17,8 @@ import java.awt.*;
 public class SignupPanel extends JPanel {
 
     public CertificatePathLabel certificatePathLabel;
-    public SenhaTextField senhaTextField;
-    public ConfirmacaoSenhaTextField confirmacaoSenhaTextField;
+    public PasswordTextField passwordTextField;
+    public PasswordConfirmTextField passwordConfirmTextField;
     public ComboboxGroup comboboxGroup;
 
     public SignupPanel(){
@@ -37,9 +37,9 @@ public class SignupPanel extends JPanel {
         new CertificatePathLabel(this);
         new ClearCertificateButton(this);
         new PasswordLabel(this);
-        new SenhaTextField(this);
+        new PasswordTextField(this);
         new ConfirmPasswordLabel(this);
-        new ConfirmacaoSenhaTextField(this);
+        new PasswordConfirmTextField(this);
         new SignupButton(this);
         new ComboboxGroup(this);
         new BackButton(this);

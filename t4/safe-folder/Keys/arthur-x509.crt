@@ -1,0 +1,71 @@
+-----BEGIN CERTIFICATE-----
+MIIDjjCCAnYCCQCklpAhpVQWSDANBgkqhkiG9w0BAQsFADCBiDELMAkGA1UEBhMC
+QlIxCzAJBgNVBAgMAlJKMQwwCgYDVQQHDANSaW8xDDAKBgNVBAoMA1BVQzEQMA4G
+A1UECwwHSU5GMTQxNjETMBEGA1UEAwwKQUMgSU5GMTQxNjEpMCcGCSqGSIb3DQEJ
+ARYaYXJ0aHVyQGdyYWQuaW5mLnB1Yy1yaW8uYnIwHhcNMjEwNTE3MTY0MDQ1WhcN
+MzEwNTE1MTY0MDQ1WjCBiDELMAkGA1UEBhMCQlIxCzAJBgNVBAgMAlJKMQwwCgYD
+VQQHDANSaW8xDDAKBgNVBAoMA1BVQzEQMA4GA1UECwwHSU5GMTQxNjETMBEGA1UE
+AwwKQUMgSU5GMTQxNjEpMCcGCSqGSIb3DQEJARYaYXJ0aHVyQGdyYWQuaW5mLnB1
+Yy1yaW8uYnIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDDnq2WpTio
+ReNQ3EapxCdmUt9khsS2BHf/YB7tjGILCzQegnV1swvcH+xfd9FUjR7pORFSNvrf
+WKt93t3l2Dc0kCvVffh5BSnXIwwbW94O+E1Yp6pvpyflj8YI+VLy0dNCiszHAF5u
+x6lRZYcrM4KiJndqeFRnqRP8zWI5O1kJJMXzCqIXwmXtfqVjWiwXTnjU97xfQqKk
+mAt8Z+uxJaQxdZJBczmo/jQAIz1gx+SXA4TshU5Ra4sQYLo5+FgAfA2vswHGXA6b
+a3N52wydZ2IYUJL2/YmTyfxzRnsyuqbL+hcOw6bm+g0OEIIC7JduKpinz3BieiO1
+5vameAJlqpedAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAEpkWl4Uj6qq4Df635ve
+zPbJ2H9JE4bvQxE4MqYMK5WhY15aDexPX7BG/1q02FH2xl7rB4zkHdpLl+QebPrP
+AS7FQIGa9ir45q1rhS311JNwDhD+X7P5r4yM0OHY4Fdw0TNtHeix1RXq4yjEsb1F
+Hzdap2DshjL/GKOIwzHDm1gzdM9yp6V0/xdXjYQav+DxNBlocbwLDAoQyqtikI5t
+PW++2z5TIvw5/CjZQd9qj0CN4Ed83xd+cJFPpal1bjMi6G7kuyThzV9Bzu1pxkzM
+3vT5sGcQ7A2nU6iqv6JjYu1G/CMgE13tnHmY1rW9gfp/Z6PsArkLvyc4dDbxjj6B
+Irk=
+-----END CERTIFICATE-----
+Certificate:
+    Data:
+        Version: 1 (0x0)
+        Serial Number: 11859825142908851784 (0xa4969021a5541648)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=BR, ST=RJ, L=Rio, O=PUC, OU=INF1416, CN=AC INF1416/emailAddress=arthur@grad.inf.puc-rio.br
+        Validity
+            Not Before: May 17 16:40:45 2021 GMT
+            Not After : May 15 16:40:45 2031 GMT
+        Subject: C=BR, ST=RJ, L=Rio, O=PUC, OU=INF1416, CN=AC INF1416/emailAddress=arthur@grad.inf.puc-rio.br
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:c3:9e:ad:96:a5:38:a8:45:e3:50:dc:46:a9:c4:
+                    27:66:52:df:64:86:c4:b6:04:77:ff:60:1e:ed:8c:
+                    62:0b:0b:34:1e:82:75:75:b3:0b:dc:1f:ec:5f:77:
+                    d1:54:8d:1e:e9:39:11:52:36:fa:df:58:ab:7d:de:
+                    dd:e5:d8:37:34:90:2b:d5:7d:f8:79:05:29:d7:23:
+                    0c:1b:5b:de:0e:f8:4d:58:a7:aa:6f:a7:27:e5:8f:
+                    c6:08:f9:52:f2:d1:d3:42:8a:cc:c7:00:5e:6e:c7:
+                    a9:51:65:87:2b:33:82:a2:26:77:6a:78:54:67:a9:
+                    13:fc:cd:62:39:3b:59:09:24:c5:f3:0a:a2:17:c2:
+                    65:ed:7e:a5:63:5a:2c:17:4e:78:d4:f7:bc:5f:42:
+                    a2:a4:98:0b:7c:67:eb:b1:25:a4:31:75:92:41:73:
+                    39:a8:fe:34:00:23:3d:60:c7:e4:97:03:84:ec:85:
+                    4e:51:6b:8b:10:60:ba:39:f8:58:00:7c:0d:af:b3:
+                    01:c6:5c:0e:9b:6b:73:79:db:0c:9d:67:62:18:50:
+                    92:f6:fd:89:93:c9:fc:73:46:7b:32:ba:a6:cb:fa:
+                    17:0e:c3:a6:e6:fa:0d:0e:10:82:02:ec:97:6e:2a:
+                    98:a7:cf:70:62:7a:23:b5:e6:f6:a6:78:02:65:aa:
+                    97:9d
+                Exponent: 65537 (0x10001)
+    Signature Algorithm: sha256WithRSAEncryption
+         4a:64:5a:5e:14:8f:aa:aa:e0:37:fa:df:9b:de:cc:f6:c9:d8:
+         7f:49:13:86:ef:43:11:38:32:a6:0c:2b:95:a1:63:5e:5a:0d:
+         ec:4f:5f:b0:46:ff:5a:b4:d8:51:f6:c6:5e:eb:07:8c:e4:1d:
+         da:4b:97:e4:1e:6c:fa:cf:01:2e:c5:40:81:9a:f6:2a:f8:e6:
+         ad:6b:85:2d:f5:d4:93:70:0e:10:fe:5f:b3:f9:af:8c:8c:d0:
+         e1:d8:e0:57:70:d1:33:6d:1d:e8:b1:d5:15:ea:e3:28:c4:b1:
+         bd:45:1f:37:5a:a7:60:ec:86:32:ff:18:a3:88:c3:31:c3:9b:
+         58:33:74:cf:72:a7:a5:74:ff:17:57:8d:84:1a:bf:e0:f1:34:
+         19:68:71:bc:0b:0c:0a:10:ca:ab:62:90:8e:6d:3d:6f:be:db:
+         3e:53:22:fc:39:fc:28:d9:41:df:6a:8f:40:8d:e0:47:7c:df:
+         17:7e:70:91:4f:a5:a9:75:6e:33:22:e8:6e:e4:bb:24:e1:cd:
+         5f:41:ce:ed:69:c6:4c:cc:de:f4:f9:b0:67:10:ec:0d:a7:53:
+         a8:aa:bf:a2:63:62:ed:46:fc:23:20:13:5d:ed:9c:79:98:d6:
+         b5:bd:81:fa:7f:67:a3:ec:02:b9:0b:bf:27:38:74:36:f1:8e:
+         3e:81:22:b9
