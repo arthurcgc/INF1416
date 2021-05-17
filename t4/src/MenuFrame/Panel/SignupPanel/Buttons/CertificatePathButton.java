@@ -7,14 +7,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CaminhoDoCertificadoButton extends JButton implements ActionListener {
+public class CertificatePathButton extends JButton implements ActionListener {
 
     SignupPanel signupPanel;
 
-    public CaminhoDoCertificadoButton(SignupPanel signupPanel) {
+    public CertificatePathButton(SignupPanel signupPanel) {
         this.signupPanel = signupPanel;
 
-        this.setText("Caminho do certificado");
+        this.setText("Certificate Path");
         this.addActionListener(this);
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
@@ -33,6 +33,6 @@ public class CaminhoDoCertificadoButton extends JButton implements ActionListene
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
-            signupPanel.caminhoDoCertificadoLabel.setText(fileChooser.getSelectedFile().getPath());
+            signupPanel.certificatePathLabel.setText(fileChooser.getSelectedFile().getPath());
     }
 }

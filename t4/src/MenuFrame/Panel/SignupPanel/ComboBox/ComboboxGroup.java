@@ -6,11 +6,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class GrupoComboBox extends JComboBox<String> implements ActionListener {
+public class ComboboxGroup extends JComboBox<String> implements ActionListener {
 
     SignupPanel signupPanel;
 
-    public GrupoComboBox(SignupPanel signupPanel) {
+    public ComboboxGroup(SignupPanel signupPanel) {
         this.addItem("Usuario");
         this.addItem("Administrador");
 
@@ -22,6 +22,6 @@ public class GrupoComboBox extends JComboBox<String> implements ActionListener {
         gridBagConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.insets = new Insets(10, 10, 0 , 10);
         signupPanel.add(this, gridBagConstraints);
-        signupPanel.grupoComboBox = this;
+        signupPanel.comboboxGroup = this;
     }
 }

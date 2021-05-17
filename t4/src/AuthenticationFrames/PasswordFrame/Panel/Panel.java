@@ -1,7 +1,7 @@
 package AuthenticationFrames.PasswordFrame.Panel;
 
 import AuthenticationFrames.PasswordFrame.Panel.LoginButton.LoginButton;
-import AuthenticationFrames.PasswordFrame.Panel.NumberButton.PhonemeButton;
+import AuthenticationFrames.PasswordFrame.Panel.PhonemeButton.PhonemeButton;
 
 import javax.swing.*;
 import java.awt.*;

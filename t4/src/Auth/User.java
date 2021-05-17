@@ -95,7 +95,7 @@ public class User {
         return salt;
     }
 
-    private byte[] generatePasswordHash(String password) throws NoSuchAlgorithmException {
+    public byte[] generatePasswordHash(String password) throws NoSuchAlgorithmException {
         // Select the message digest for the hash computation -> SHA-256
         MessageDigest md = MessageDigest.getInstance("SHA1");
 

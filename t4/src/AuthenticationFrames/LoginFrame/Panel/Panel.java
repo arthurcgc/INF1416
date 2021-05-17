@@ -22,7 +22,7 @@ public class Panel extends JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.insets = new Insets(0, 10, 0, 10);
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        this.add(new JLabel("Informe seu e-mail:"), gridBagConstraints);
+        this.add(new JLabel("email:"), gridBagConstraints);
 
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;

@@ -1,20 +1,20 @@
-package MenuFrame.Panel.AlterarSenhaPanel.Buttons;
+package MenuFrame.Panel.ChangePasswordPanel.Buttons;
 
-import MenuFrame.Panel.AlterarSenhaPanel.AlterarSenhaPanel;
+import MenuFrame.Panel.ChangePasswordPanel.ChangePasswordPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CaminhoDoCertificadoButton extends JButton implements ActionListener {
+public class CertificatePathButton extends JButton implements ActionListener {
 
-    AlterarSenhaPanel alterarSenhaPanel;
+    ChangePasswordPanel changePasswordPanel;
 
-    public CaminhoDoCertificadoButton(AlterarSenhaPanel alterarSenhaPanel) {
-        this.alterarSenhaPanel = alterarSenhaPanel;
+    public CertificatePathButton(ChangePasswordPanel changePasswordPanel) {
+        this.changePasswordPanel = changePasswordPanel;
 
-        this.setText("Caminho do certificado");
+        this.setText("Certificate Path");
         this.addActionListener(this);
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
@@ -23,7 +23,7 @@ public class CaminhoDoCertificadoButton extends JButton implements ActionListene
         gridBagConstraints.weightx = 0;
         gridBagConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.insets = new Insets(10, 10, 0 , 10);
-        alterarSenhaPanel.add(this, gridBagConstraints);
+        changePasswordPanel.add(this, gridBagConstraints);
     }
 
 
@@ -33,6 +33,6 @@ public class CaminhoDoCertificadoButton extends JButton implements ActionListene
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
-            alterarSenhaPanel.caminhoDoCertificadoLabel.setText(fileChooser.getSelectedFile().getPath());
+            changePasswordPanel.certificatePathLabel.setText(fileChooser.getSelectedFile().getPath());
     }
 }

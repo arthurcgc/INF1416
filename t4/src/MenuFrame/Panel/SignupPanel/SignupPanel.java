@@ -1,47 +1,47 @@
 package MenuFrame.Panel.SignupPanel;
 
+import Auth.Validation;
 import MenuFrame.Panel.SignupPanel.Buttons.SignupButton;
-import MenuFrame.Panel.SignupPanel.Buttons.CaminhoDoCertificadoButton;
-import MenuFrame.Panel.SignupPanel.Buttons.LimparCertificadoButton;
-import MenuFrame.Panel.SignupPanel.Buttons.VoltarButton;
-import MenuFrame.Panel.SignupPanel.ComboBox.GrupoComboBox;
+import MenuFrame.Panel.SignupPanel.Buttons.CertificatePathButton;
+import MenuFrame.Panel.SignupPanel.Buttons.ClearCertificateButton;
+import MenuFrame.Panel.SignupPanel.Buttons.BackButton;
+import MenuFrame.Panel.SignupPanel.ComboBox.ComboboxGroup;
 import MenuFrame.Panel.SignupPanel.Labels.*;
 import MenuFrame.Panel.SignupPanel.TextFields.ConfirmacaoSenhaTextField;
 import MenuFrame.Panel.SignupPanel.TextFields.SenhaTextField;
-import Database.Database;
-import Security.Validation1;
+import Database.*;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class SignupPanel extends JPanel {
 
-    public CaminhoDoCertificadoLabel caminhoDoCertificadoLabel;
+    public CertificatePathLabel certificatePathLabel;
     public SenhaTextField senhaTextField;
     public ConfirmacaoSenhaTextField confirmacaoSenhaTextField;
-    public GrupoComboBox grupoComboBox;
+    public ComboboxGroup comboboxGroup;
 
     public SignupPanel(){
         try {
-            Database.log(6001, Validation1.user.getString("email"));
+            Database.log(Registry.RegistryWithTimestamp(6001, Validation.user.Email));
         } catch (Exception e1) {
             e1.printStackTrace();
         }
 
         this.setLayout(new GridBagLayout());
 
-        new CabecalhoLabel(this);
-        new TotalUsuariosLabel(this);
-        new FormularioLabel(this);
-        new CaminhoDoCertificadoButton(this);
-        new CaminhoDoCertificadoLabel(this);
-        new LimparCertificadoButton(this);
-        new SenhaLabel(this);
+        new HeaderLabel(this);
+        new TotalUsersLabels(this);
+        new FormLabel(this);
+        new CertificatePathButton(this);
+        new CertificatePathLabel(this);
+        new ClearCertificateButton(this);
+        new PasswordLabel(this);
         new SenhaTextField(this);
-        new ConfirmacaoSenhaLabel(this);
+        new ConfirmPasswordLabel(this);
         new ConfirmacaoSenhaTextField(this);
         new SignupButton(this);
-        new GrupoComboBox(this);
-        new VoltarButton(this);
+        new ComboboxGroup(this);
+        new BackButton(this);
     }
 }

@@ -5,14 +5,14 @@ import MenuFrame.Panel.SignupPanel.SignupPanel;
 import javax.swing.*;
 import java.awt.*;
 
-public class ConfirmacaoSenhaLabel extends JLabel {
+public class ConfirmPasswordLabel extends JLabel {
 
     SignupPanel signupPanel;
 
-    public ConfirmacaoSenhaLabel(SignupPanel signupPanel) {
+    public ConfirmPasswordLabel(SignupPanel signupPanel) {
         this.signupPanel = signupPanel;
 
-        this.setText("<html>Confirmação senha pessoal:</html>");
+        this.setText("<html>Confirm password:</html>");
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 0;

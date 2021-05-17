@@ -15,8 +15,6 @@ public class OnClick implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         try {
             String email = Main.loginFrame.panel.textField.getText();
-//            email = "user01@inf1416.puc-rio.br";
-//            email = "admin@inf1416.puc-rio.br";
 
             if((Validation.verifyEmail(email) == false)) {
                 Database.log(Registry.RegistryWithTimestamp(2005, email));
@@ -24,13 +22,6 @@ public class OnClick implements ActionListener {
 
                 return;
             }
-
-//            if(Blocked.isBlocked()) {
-//                Database.log(Registry.RegistryWithTimestamp(2004, email));
-//                Main.loginFrame.panel.warning.setText("User is temporarily blocked");
-//
-//                return;
-//            }
 
             Database.log(Registry.RegistryWithTimestamp(2003, email));
             Database.log(Registry.RegistryWithTimestamp(2002));

@@ -7,14 +7,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LimparCertificadoButton extends JButton implements ActionListener {
+public class ClearCertificateButton extends JButton implements ActionListener {
 
     SignupPanel signupPanel;
 
-    public LimparCertificadoButton(SignupPanel signupPanel) {
+    public ClearCertificateButton(SignupPanel signupPanel) {
         this.signupPanel = signupPanel;
 
-        this.setText("Limpar campo");
+        this.setText("Clear");
         this.addActionListener(this);
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
@@ -29,6 +29,6 @@ public class LimparCertificadoButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        signupPanel.caminhoDoCertificadoLabel.setText("");
+        signupPanel.certificatePathLabel.setText("");
     }
 }

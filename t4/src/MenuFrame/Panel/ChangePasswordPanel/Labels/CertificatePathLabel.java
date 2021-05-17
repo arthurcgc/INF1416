@@ -1,16 +1,16 @@
-package MenuFrame.Panel.AlterarSenhaPanel.Labels;
+package MenuFrame.Panel.ChangePasswordPanel.Labels;
 
-import MenuFrame.Panel.AlterarSenhaPanel.AlterarSenhaPanel;
+import MenuFrame.Panel.ChangePasswordPanel.ChangePasswordPanel;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class CaminhoDoCertificadoLabel extends JLabel {
+public class CertificatePathLabel extends JLabel {
 
-    AlterarSenhaPanel alterarSenhaPanel;
+    ChangePasswordPanel changePasswordPanel;
 
-    public CaminhoDoCertificadoLabel(AlterarSenhaPanel alterarSenhaPanel) {
-        this.alterarSenhaPanel = alterarSenhaPanel;
+    public CertificatePathLabel(ChangePasswordPanel changePasswordPanel) {
+        this.changePasswordPanel = changePasswordPanel;
 
         this.setText("");
         this.setVerticalAlignment(JLabel.NORTH);
@@ -21,7 +21,7 @@ public class CaminhoDoCertificadoLabel extends JLabel {
         gridBagConstraints.weightx = 1;
         gridBagConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.insets = new Insets(10, 10, 0 , 10);
-        alterarSenhaPanel.add(this, gridBagConstraints);
-        alterarSenhaPanel.caminhoDoCertificadoLabel = this;
+        changePasswordPanel.add(this, gridBagConstraints);
+        changePasswordPanel.certificatePathLabel = this;
     }
 }

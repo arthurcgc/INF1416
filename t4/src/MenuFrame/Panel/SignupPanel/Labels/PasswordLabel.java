@@ -5,23 +5,21 @@ import MenuFrame.Panel.SignupPanel.SignupPanel;
 import javax.swing.*;
 import java.awt.*;
 
-public class CaminhoDoCertificadoLabel extends JLabel {
+public class PasswordLabel extends JLabel {
 
     SignupPanel signupPanel;
 
-    public CaminhoDoCertificadoLabel(SignupPanel signupPanel) {
+    public PasswordLabel(SignupPanel signupPanel) {
         this.signupPanel = signupPanel;
 
-        this.setText("");
-        this.setVerticalAlignment(JLabel.NORTH);
+        this.setText("<html>Password:</html>");
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.weightx = 1;
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.weightx = 0;
         gridBagConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.insets = new Insets(10, 10, 0 , 10);
         signupPanel.add(this, gridBagConstraints);
-        signupPanel.caminhoDoCertificadoLabel = this;
     }
 }

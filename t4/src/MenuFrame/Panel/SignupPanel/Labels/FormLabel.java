@@ -5,10 +5,10 @@ import MenuFrame.Panel.SignupPanel.SignupPanel;
 import javax.swing.*;
 import java.awt.*;
 
-public class FormularioLabel extends JLabel {
+public class FormLabel extends JLabel {
 
-    public FormularioLabel(SignupPanel signupPanel) {
-        String totalDeUsuarios = "Formulario de cadastro: ";
+    public FormLabel(SignupPanel signupPanel) {
+        String totalDeUsuarios = "SignUp form: ";
 
         this.setText(totalDeUsuarios);
         this.setVerticalAlignment(JLabel.NORTH);

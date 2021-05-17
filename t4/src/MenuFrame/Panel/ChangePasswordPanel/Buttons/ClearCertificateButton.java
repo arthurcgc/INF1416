@@ -1,20 +1,20 @@
-package MenuFrame.Panel.AlterarSenhaPanel.Buttons;
+package MenuFrame.Panel.ChangePasswordPanel.Buttons;
 
-import MenuFrame.Panel.AlterarSenhaPanel.AlterarSenhaPanel;
+import MenuFrame.Panel.ChangePasswordPanel.ChangePasswordPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LimparCertificadoButton extends JButton implements ActionListener {
+public class ClearCertificateButton extends JButton implements ActionListener {
 
-    AlterarSenhaPanel alterarSenhaPanel;
+    ChangePasswordPanel changePasswordPanel;
 
-    public LimparCertificadoButton(AlterarSenhaPanel alterarSenhaPanel) {
-        this.alterarSenhaPanel = alterarSenhaPanel;
+    public ClearCertificateButton(ChangePasswordPanel changePasswordPanel) {
+        this.changePasswordPanel = changePasswordPanel;
 
-        this.setText("Limpar campo");
+        this.setText("Clear");
         this.addActionListener(this);
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
@@ -23,12 +23,12 @@ public class LimparCertificadoButton extends JButton implements ActionListener {
         gridBagConstraints.weightx = 0;
         gridBagConstraints.anchor = GridBagConstraints.LAST_LINE_START;
         gridBagConstraints.insets = new Insets(10, 10, 0 , 10);
-        alterarSenhaPanel.add(this, gridBagConstraints);
+        changePasswordPanel.add(this, gridBagConstraints);
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        alterarSenhaPanel.caminhoDoCertificadoLabel.setText("");
+        changePasswordPanel.certificatePathLabel.setText("");
     }
 }

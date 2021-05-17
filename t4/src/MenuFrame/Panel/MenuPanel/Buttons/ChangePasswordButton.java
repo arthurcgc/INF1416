@@ -1,7 +1,7 @@
 package MenuFrame.Panel.MenuPanel.Buttons;
 
 import MenuFrame.MenuFrame;
-//import MenuFrame.Panel.AlterarSenhaPanel.AlterarSenhaPanel;
+import MenuFrame.Panel.ChangePasswordPanel.ChangePasswordPanel;
 import MenuFrame.Panel.MenuPanel.MenuPanel;
 import Database.*;
 import Auth.Validation;
@@ -39,9 +39,17 @@ public class ChangePasswordButton extends JButton implements ActionListener {
             e1.printStackTrace();
         }
 
-//        MenuFrame.getInstance().remove(menuPanel);
-//        AlterarSenhaPanel alterarSenhaPanel = new AlterarSenhaPanel();
-//        MenuFrame.getInstance().add(alterarSenhaPanel);
-//        alterarSenhaPanel.updateUI();
+        try {
+            MenuFrame.getInstance().remove(menuPanel);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        ChangePasswordPanel changePasswordPanel = new ChangePasswordPanel();
+        try {
+            MenuFrame.getInstance().add(changePasswordPanel);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        changePasswordPanel.updateUI();
     }
 }

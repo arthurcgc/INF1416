@@ -1,8 +1,8 @@
-package MenuFrame.Panel.AlterarSenhaPanel.Buttons;
+package MenuFrame.Panel.ChangePasswordPanel.Buttons;
 
 import Auth.Validation;
 import MenuFrame.MenuFrame;
-import MenuFrame.Panel.AlterarSenhaPanel.AlterarSenhaPanel;
+import MenuFrame.Panel.ChangePasswordPanel.ChangePasswordPanel;
 import MenuFrame.Panel.MenuPanel.MenuPanel;
 import Database.*;
 
@@ -11,14 +11,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VoltarButton extends JButton implements ActionListener {
+public class BackButton extends JButton implements ActionListener {
 
-    AlterarSenhaPanel alterarSenhaPanel;
+    ChangePasswordPanel changePasswordPanel;
 
-    public VoltarButton(AlterarSenhaPanel alterarSenhaPanel) {
-        this.alterarSenhaPanel = alterarSenhaPanel;
+    public BackButton(ChangePasswordPanel changePasswordPanel) {
+        this.changePasswordPanel = changePasswordPanel;
 
-        this.setText("Voltar para o Menu Principal");
+        this.setText("Back");
         this.addActionListener(this);
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
@@ -29,7 +29,7 @@ public class VoltarButton extends JButton implements ActionListener {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.insets = new Insets(10, 10, 0 , 10);
-        alterarSenhaPanel.add(this, gridBagConstraints);
+        changePasswordPanel.add(this, gridBagConstraints);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class VoltarButton extends JButton implements ActionListener {
         }
 
         try {
-            MenuFrame.getInstance().remove(alterarSenhaPanel);
+            MenuFrame.getInstance().remove(changePasswordPanel);
         } catch (Exception exception) {
             exception.printStackTrace();
         }

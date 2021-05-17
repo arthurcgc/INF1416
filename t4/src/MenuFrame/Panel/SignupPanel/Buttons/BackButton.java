@@ -1,24 +1,24 @@
 package MenuFrame.Panel.SignupPanel.Buttons;
 
+import Auth.Validation;
 import MenuFrame.MenuFrame;
 import MenuFrame.Panel.SignupPanel.SignupPanel;
 import MenuFrame.Panel.MenuPanel.MenuPanel;
-import Database.Database;
-import Security.Validation1;
+import Database.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VoltarButton extends JButton implements ActionListener {
+public class BackButton extends JButton implements ActionListener {
 
     SignupPanel signupPanel;
 
-    public VoltarButton(SignupPanel signupPanel) {
+    public BackButton(SignupPanel signupPanel) {
         this.signupPanel = signupPanel;
 
-        this.setText("Voltar para o Menu Principal");
+        this.setText("Back");
         this.addActionListener(this);
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
@@ -36,14 +36,22 @@ public class VoltarButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            Database.log(6007, Validation1.user.getString("email"));
+            Database.log(Registry.RegistryWithTimestamp(6007, Validation.user.Email));
         } catch (Exception e1) {
             e1.printStackTrace();
         }
 
-        MenuFrame.getInstance().remove(signupPanel);
+        try {
+            MenuFrame.getInstance().remove(signupPanel);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
         MenuPanel menuPanel = new MenuPanel();
-        MenuFrame.getInstance().add(menuPanel);
+        try {
+            MenuFrame.getInstance().add(menuPanel);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
         menuPanel.updateUI();
     }
 }

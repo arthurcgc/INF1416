@@ -121,6 +121,17 @@ public class Database {
         ps.close();
     }
 
+    public void deleteUser(Auth.User user) throws Exception{
+        Database db = Database.getInstance();
+        String query = String.format("DELETE FROM users WHERE email = ?");
+        PreparedStatement ps = db.conn.prepareStatement(query);
+
+        ps.setString(1, user.Email);
+
+        ps.executeUpdate();
+        ps.close();
+    }
+
     public void insertGroup(String groupString, int groupID) throws Exception{
         Database db = Database.getInstance();
         String query = String.format("INSERT INTO groups(id,name) VALUES (?,?);");
@@ -133,18 +144,6 @@ public class Database {
         ps.close();
     }
 
-    public void setPassword(Auth.User user) throws Exception {
-        Database db = Database.getInstance();
-        String query = String.format("UPDATE users SET hash = ?, salt = ? WHERE email = ?");
-
-        PreparedStatement ps = db.conn.prepareStatement(query);
-        ps.setString(1, DatatypeConverter.printHexBinary(user.Hash));
-        ps.setString(2, new String(user.Salt));
-        ps.setString(3, user.Email);
-
-        ps.executeUpdate();
-        ps.close();
-    }
 
     public void setCertificate(Auth.User user) throws Exception {
         Database db = Database.getInstance();

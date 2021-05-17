@@ -1,23 +1,23 @@
 package MenuFrame.Panel.SignupPanel.Labels;
 
 import MenuFrame.Panel.SignupPanel.SignupPanel;
-import Database.DAO;
+import Database.*;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class TotalUsuariosLabel extends JLabel {
+public class TotalUsersLabels extends JLabel {
 
-    public TotalUsuariosLabel(SignupPanel signupPanel) {
-        String totalDeUsuarios = "Total de usuários no sistema: ";
+    public TotalUsersLabels(SignupPanel signupPanel) {
+        String totalUsers = "Total users: ";
 
         try {
-            totalDeUsuarios += DAO.getInstance().getUsersCount().getInt(1);
+            totalUsers += Database.getInstance().getUsersCount();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        this.setText(totalDeUsuarios);
+        this.setText(totalUsers);
         this.setVerticalAlignment(JLabel.NORTH);
 
         GridBagConstraints gridBagConstraints = new GridBagConstraints();

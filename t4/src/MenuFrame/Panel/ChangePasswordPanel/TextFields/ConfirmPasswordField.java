@@ -1,13 +1,13 @@
-package MenuFrame.Panel.AlterarSenhaPanel.TextFields;
+package MenuFrame.Panel.ChangePasswordPanel.TextFields;
 
-import MenuFrame.Panel.AlterarSenhaPanel.AlterarSenhaPanel;
+import MenuFrame.Panel.ChangePasswordPanel.ChangePasswordPanel;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ConfirmacaoSenhaTextField extends JPasswordField {
+public class ConfirmPasswordField extends JPasswordField {
 
-    public ConfirmacaoSenhaTextField(AlterarSenhaPanel alterarSenhaPanel) {
+    public ConfirmPasswordField(ChangePasswordPanel changePasswordPanel) {
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -15,7 +15,7 @@ public class ConfirmacaoSenhaTextField extends JPasswordField {
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.insets = new Insets(10, 10, 0 , 10);
-        alterarSenhaPanel.add(this, gridBagConstraints);
-        alterarSenhaPanel.confirmacaoSenhaTextField = this;
+        changePasswordPanel.add(this, gridBagConstraints);
+        changePasswordPanel.confirmPasswordField = this;
     }
 }

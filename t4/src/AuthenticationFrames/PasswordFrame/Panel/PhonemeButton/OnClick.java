@@ -1,4 +1,4 @@
-package AuthenticationFrames.PasswordFrame.Panel.NumberButton;
+package AuthenticationFrames.PasswordFrame.Panel.PhonemeButton;
 
 import Main.Main;
 
