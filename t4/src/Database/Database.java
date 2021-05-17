@@ -109,6 +109,9 @@ public class Database {
         if (registry.UserEmail != null){
             ps.setInt(2, User.GetUserID(registry.UserEmail));
         }
+        else {
+            ps.setInt(2, -1);
+        }
         ps.setInt(3, registry.Code);
 
         ps.executeUpdate();
@@ -121,6 +124,9 @@ public class Database {
         ps.setString(1, registry.Timestamp);
         if (registry.UserEmail != null){
             ps.setInt(2, User.GetUserID(registry.UserEmail));
+        }
+        else{
+            ps.setInt(2, -1);
         }
         ps.setString(3, db.Map.get(registry.Code));
 
