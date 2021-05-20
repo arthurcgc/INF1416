@@ -26,6 +26,7 @@ public class User {
     public byte[] Salt;
     public String SaltString;
     public int AccessCounter;
+    public int BlockedCounter;
 
 
     public PrivateKey getPrivateKey(String pathString) throws NoSuchAlgorithmException, NoSuchProviderException, NoSuchPaddingException, InvalidKeyException, IOException, InvalidKeySpecException, IllegalBlockSizeException, BadPaddingException {

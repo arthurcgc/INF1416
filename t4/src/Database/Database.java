@@ -147,6 +147,57 @@ public class Database {
         ps.close();
     }
 
+    public void incBlockCounter(String email) throws Exception{
+        Database db = Database.getInstance();
+        String query = String.format("UPDATE users SET blocked_counter = blocked_counter +1 WHERE email=?;");
+        PreparedStatement ps = db.conn.prepareStatement(query);
+        ps.setString(1, email);
+        ps.executeUpdate();
+        ps.close();
+    }
+
+    public void clearBlockedCounter(String email) throws Exception{
+        Database db = Database.getInstance();
+        String query = String.format("UPDATE users SET blocked_counter = 0 WHERE email=?;");
+        PreparedStatement ps = db.conn.prepareStatement(query);
+        ps.setString(1, email);
+        ps.executeUpdate();
+        ps.close();
+    }
+
+    public void insertBlocked(String email, long time) throws Exception{
+        Database db = Database.getInstance();
+        String query = String.format("UPDATE users SET blocked_milliseconds = ? WHERE email=?;");
+        PreparedStatement ps = db.conn.prepareStatement(query);
+
+        ps.setLong(1, time);
+        ps.setString(2, email);
+        ps.executeUpdate();
+        ps.close();
+    }
+
+    public int getBlockedCount(String email) throws Exception{
+        Database db = Database.getInstance();
+        String query = String.format("Select blocked_counter FROM users WHERE email=?;");
+        PreparedStatement ps = db.conn.prepareStatement(query);
+        ps.setString(1, email);
+        ResultSet rs = ps.executeQuery();
+        int blockedCount =  rs.getInt("blocked_counter");
+        ps.close();
+        return blockedCount;
+    }
+
+    public long getBlockedMilli(String email) throws Exception{
+        Database db = Database.getInstance();
+        String query = String.format("Select blocked_milliseconds FROM users WHERE email=?;");
+        PreparedStatement ps = db.conn.prepareStatement(query);
+        ps.setString(1, email);
+        ResultSet rs = ps.executeQuery();
+        long blockedMilli =  rs.getLong("blocked_milliseconds");
+        ps.close();
+        return blockedMilli;
+    }
+
     public String getGroupName(int id) throws Exception {
         Database db = Database.getInstance();
         String query = String.format("SELECT name FROM groups WHERE id = ?;");

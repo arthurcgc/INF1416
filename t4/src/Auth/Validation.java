@@ -44,15 +44,19 @@ public class Validation {
         return u;
     }
     // step 1
-    public static boolean verifyEmail(String email) throws Exception {
-        Database db = Database.getInstance();
-        ResultSet dbUser = db.getUser(email);
-        // ResultSet dbGroup = db.getGroupName(dbUser.getString(""))
-        Validation.user = rebuildUser(dbUser);
-        Validation.user.Group = db.getGroupName(user.GroupID);
-        if(dbUser.isClosed())
+    public static boolean verifyEmail(String email) {
+        try{
+            Database db = Database.getInstance();
+            ResultSet dbUser = db.getUser(email);
+            // ResultSet dbGroup = db.getGroupName(dbUser.getString(""))
+            Validation.user = rebuildUser(dbUser);
+            Validation.user.Group = db.getGroupName(user.GroupID);
+            if(dbUser.isClosed())
+                return false;
+        }
+        catch (Exception e){
             return false;
-
+        }
         return true;
     }
 
@@ -135,16 +139,6 @@ public class Validation {
         return false;
     }
 
-//    public static PublicKey getPublicKey() throws Exception {
-//        byte[] certificateBytes = Validation.user.getBytes("certificate");
-//
-//        CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
-//        InputStream certificateInputStream = new ByteArrayInputStream(certificateBytes);
-//        X509Certificate x509Certificate = (X509Certificate) certificateFactory.generateCertificate(certificateInputStream);
-//
-//        return x509Certificate.getPublicKey();
-//    }
-
     private static boolean verifyCertificateWithPrivateKey(X509Certificate cert, PrivateKey pKey) throws IOException, SignatureException, NoSuchAlgorithmException, InvalidKeyException {
         // create randomic array of 2048 bytes
         byte[] rArr = new byte[2048];
@@ -176,10 +170,10 @@ public class Validation {
 
         user.Certificate = CertificateHelper.decodeBase64Certificate(user.CertificateBase64);
         if ( verifyCertificateWithPrivateKey(user.Certificate, user.PrivateKey) ){
-            Database.log(Registry.RegistryWithTimestamp(4006, user.Email));
             return true;
         }
 
+        Database.log(Registry.RegistryWithTimestamp(4006, user.Email));
         return false;
     }
 }

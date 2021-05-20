@@ -1,0 +1,4 @@
+1- senha de entrada fixa
+2- Bloqueio de usuario [done]
+3- notificacoes usuario invalido, erro de senha, erro de chave, bloquei da etapa 2 e 3, erro de integridade autenticidade [done]
+4- log mensagens repetidas evitar o timestamp

@@ -66,6 +66,7 @@ public class Table extends JTable {
         try {
             decipherRow();
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, String.format("Can't decipher file: %s", e.getMessage()));
             e.printStackTrace();
         }
     }
