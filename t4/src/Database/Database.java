@@ -103,9 +103,10 @@ public class Database {
 
     private static void logRegistry(Registry registry) throws Exception {
         Database db = Database.getInstance();
-        String query = String.format("INSERT INTO registry(timestamp, user_id, event_code) VALUES (?, ?, ?)");
+        String query = String.format("INSERT INTO registry(timestamp, user_id, event_code, time_nano) VALUES (?, ?, ?, ?)");
         PreparedStatement ps = db.conn.prepareStatement(query);
         ps.setString(1, registry.Timestamp);
+        ps.setLong(4, registry.nanoSecondsTimestamp);
         if (registry.UserEmail != null){
             ps.setInt(2, User.GetUserID(registry.UserEmail));
         }
@@ -119,9 +120,10 @@ public class Database {
 
     private static void logMessage(Registry registry) throws Exception {
         Database db = Database.getInstance();
-        String query = String.format("INSERT INTO messages(timestamp, user_id, content) VALUES (?, ?, ?)");
+        String query = String.format("INSERT INTO messages(timestamp, user_id, content, time_nano) VALUES (?, ?, ?, ?)");
         PreparedStatement ps = db.conn.prepareStatement(query);
         ps.setString(1, registry.Timestamp);
+        ps.setLong(4, registry.nanoSecondsTimestamp);
         if (registry.UserEmail != null){
             ps.setInt(2, User.GetUserID(registry.UserEmail));
         }

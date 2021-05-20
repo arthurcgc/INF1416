@@ -21,7 +21,7 @@ public class OnClick implements ActionListener {
             if(passwordPhonemes.size() != 4 && passwordPhonemes.size() != 5 && passwordPhonemes.size() != 6) {
                 Database db = Database.getInstance();
                 db.incBlockCounter(Validation.user.Email);
-                JOptionPane.showMessageDialog(Main.keyVerificationFrame.panel, "Invalid password", "Error", JOptionPane.OK_OPTION);
+                JOptionPane.showMessageDialog(Main.passwordFrame.panel, "Invalid password", "Error", JOptionPane.OK_OPTION);
                 if( db.getBlockedCount(Validation.user.Email) >= 3 ){
                     Main.passwordFrame.dispose();
                     Main.loginFrame.setVisible(true);
@@ -30,6 +30,7 @@ public class OnClick implements ActionListener {
                     long timeMilli = date.getTime();
                     Database.getInstance().insertBlocked(Validation.user.Email, timeMilli);
                 }
+                Main.passwordFrame.panel.passwordPhonemes = new ArrayList<String[]>();
                 return;
             }
 
@@ -54,6 +55,7 @@ public class OnClick implements ActionListener {
                     long timeMilli = date.getTime();
                     Database.getInstance().insertBlocked(Validation.user.Email, timeMilli);
                 }
+                Main.passwordFrame.panel.passwordPhonemes = new ArrayList<String[]>();
                 return;
             }
 

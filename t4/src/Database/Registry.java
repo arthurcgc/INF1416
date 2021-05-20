@@ -7,12 +7,14 @@ public class Registry {
     public String Timestamp;
     public String UserEmail;
     public int Code;
+    public long nanoSecondsTimestamp;
 
     public static Registry RegistryWithTimestamp(){
         Registry r = new Registry();
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         r.Timestamp = formatter.format(date);
+        r.nanoSecondsTimestamp = System.currentTimeMillis();
 
         return r;
     }
@@ -23,7 +25,7 @@ public class Registry {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         r.Timestamp = formatter.format(date);
         r.Code = code;
-
+        r.nanoSecondsTimestamp = System.currentTimeMillis();
         return r;
     }
 
@@ -34,6 +36,7 @@ public class Registry {
         r.Timestamp = formatter.format(date);
         r.Code = code;
         r.UserEmail = email;
+        r.nanoSecondsTimestamp = System.currentTimeMillis();
 
         return r;
     }
