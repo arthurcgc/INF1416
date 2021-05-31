@@ -1,4 +1,4 @@
-# ideias
+# Tópicos
 * SSRF - Server Side Request Forgery - artigo: https://portswigger.net/web-security/ssrf
 	- Gitlab SSRF Redis vulnerabilty: https://www.youtube.com/watch?v=LrLJuyAdoAg
 	- Server Side HTTP redirection
