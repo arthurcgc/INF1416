@@ -47,7 +47,7 @@ public class Database {
         ResultSet resultSet = ps.executeQuery();
 
         String email = resultSet.getString("email");
-        resultSet.close();
+        // resultSet.close();
         return email;
     }
 }
